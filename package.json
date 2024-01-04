@@ -1,0 +1,57 @@
+{
+    "name": "discord-fart-bot",
+    "version": "0.0.7",
+    "description": "A discord bot and a fart joke all in one, dedicated to my son.",
+    "private": true,
+    "main": "run-server.js",
+    "keywords": [
+        "discord",
+        "node"
+    ],
+    "author": "Jeremy Osborne<jeremywosborne@gmail.com>",
+    "repository": "https://github.com/jeremyosborne/discord-fart-bot",
+    "license": "UNLICENSED",
+    "scripts": {
+        "build": "tsc --project src/tsconfig.json --outDir build `# Heroku will run this script automatically on deploy`",
+        "start": "DEBUG=*:warn,*:info USE_SRC_CODE=1 nodemon --watch \"src/**\" --ext \"ts,json\" --exec \"tsx run-server.js\" `# Dev start script prefers code in src code in build.`",
+        "start:prod": "DEBUG=*:warn,*:info node run-server.js",
+        "prepare": "husky install"
+    },
+    "dependencies": {
+        "@mikro-orm/cli": "^5.9.4",
+        "@mikro-orm/core": "5.9.4",
+        "@mikro-orm/mongo-highlighter": "^1.0.0",
+        "@mikro-orm/mongodb": "5.9.4",
+        "@mikro-orm/reflection": "5.9.4",
+        "debug": "^4.3.1",
+        "discord.js": "14.14.1",
+        "dotenv": "16.3.1",
+        "lodash": "4.17.21",
+        "redis": "^4.6.11",
+        "utf-8-validate": "6.0.3"
+    },
+    "engines": {
+        "node": "=18.17.1"
+    },
+    "devDependencies": {
+        "@tsconfig/node18": "^18.2.1",
+        "@types/debug": "^4.1.5",
+        "@types/lodash": "^4.14.168",
+        "@types/node": "^18.17.11",
+        "husky": "^8.0.3",
+        "lint-nvmrc-with-engines": "^0.1.3",
+        "lint-staged": "^15.2.0",
+        "nodemon": "^3.0.2",
+        "prettier": "^3.1.0",
+        "tsx": "^4.6.2",
+        "typescript": "^5.2.2"
+    },
+    "lint-staged": {
+        "*.{js,css,md}": [
+            "prettier --write"
+        ],
+        "{.nvmrc,package.json}": [
+            "lint-nvmrc-with-engines"
+        ]
+    }
+}
